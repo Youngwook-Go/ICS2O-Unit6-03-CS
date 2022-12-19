@@ -26,9 +26,10 @@ class Program {
         JsonNode tempNode = mainNode!["temp"]!;
         // Console.WriteLine(weather1Node);
         JsonNode weatherNode = forecastNode!["weather"]!;
-        //JsonNode weather1Node = weatherNode!["main"]!;
+        JsonNode weatherInfo = weatherNode[0];
+        JsonNode weatherMainNode = weatherInfo!["main"]!;
         
-        Console.WriteLine("Weather: " + weatherNode[0]);
+        Console.WriteLine("Weather: " + weatherMainNode);
         Console.WriteLine("Temperature: " + tempNode);
         Console.WriteLine("Region: " + countryNode);
     }
