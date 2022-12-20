@@ -6,7 +6,8 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-class Program {
+class Program 
+{
     public static async Task Main()
     {
         HttpClient client = new HttpClient();
@@ -14,7 +15,7 @@ class Program {
             "https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5"
         );
         // Console.WriteLine(response);
-        var jsonAsDictionary  = System.Text.Json.JsonSerializer.Deserialize<Object>(response);
+        var jsonAsDictionary = System.Text.Json.JsonSerializer.Deserialize<Object>(response);
         // Console.WriteLine(jsonAsDictionary);
         Console.WriteLine("");
         JsonNode forecastNode = JsonNode.Parse(response)!;
@@ -28,9 +29,9 @@ class Program {
         JsonNode weatherNode = forecastNode!["weather"]!;
         JsonNode weatherInfo = weatherNode[0];
         JsonNode weatherMainNode = weatherInfo!["main"]!;
-        
+
         Console.WriteLine("Weather: " + weatherMainNode);
-        Console.WriteLine("Temperature: " + tempNode);
+        Console.WriteLine("Temperature: " + tempNode + " K");
         Console.WriteLine("Region: " + countryNode);
     }
 }
